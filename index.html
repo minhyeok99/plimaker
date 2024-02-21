@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>사진과 음악을 조합하여 비디오 만들기</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <input type="file" id="imageInput" accept="image/*" />
+        <!-- 곡 업로드 버튼들 -->
+        <div id="musicUploadButtons">
+            <input type="file" id="musicInput1" class="musicInput" accept="audio/*" />
+        </div>
+        <button id="addMusicButton">곡 추가하기</button>
+        <button id="createVideoButton">동영상 만들기</button>
+        <video id="videoPlayer" controls></video>
+        <script>
+            const imageInput = document.getElementById('imageInput');
+            const addMusicButton = document.getElementById('addMusicButton');
+            const createVideoButton = document.getElementById('createVideoButton');
+            const videoPlayer = document.getElementById('videoPlayer');
+
+            // 곡 추가 버튼 클릭 시 새로운 곡 업로드 버튼 생성
+            addMusicButton.addEventListener('click', () => {
+                const musicUploadButtons = document.getElementById('musicUploadButtons');
+                const currentMusicInputs = document.querySelectorAll('.musicInput');
+                if (currentMusicInputs.length < 12) {
+                    const newMusicInput = document.createElement('input');
+                    newMusicInput.type = 'file';
+                    newMusicInput.className = 'musicInput';
+                    newMusicInput.accept = 'audio/*';
+                    musicUploadButtons.appendChild(newMusicInput);
+                }
+            });
+
+            createVideoButton.addEventListener('click', () => {
+                // 이미지와 음악을 조합하여 비디오를 생성하는 로직을 추가
+                // 동영상을 16:9 비율로 만들고, 사진은 세로가 동영상의 세로와 같도록 중앙 정렬
+                // 음악의 제목을 자막으로 표시하는 기능 추가
+            });
+        </script>
+    </body>
+</html>
